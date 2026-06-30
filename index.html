@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클라이밋팟 소개 — 테크포임팩트 캠퍼스</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --ink: #111111;
+        --line: #999999;
+        --soft: #F4F4F2;
+        --gray: #5f5f5f;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+        font-family:'Noto Sans KR', sans-serif;
+        color:var(--ink);
+        background:#8a8a8a;
+        padding:24px 12px;
+    }
+
+    .page {
+        width:100%;
+        max-width:794px;            /* ≈ A4 width @96dpi */
+        padding:40px 44px;
+        margin:0 auto;
+        background:#fff;
+        position:relative;
+        box-shadow:0 4px 24px rgba(0,0,0,0.28);
+        border-radius:2px;
+        line-height:1.6;
+    }
+
+    /* ===== Header ===== */
+    .header {
+        position:relative;
+        margin-bottom:24px;
+        padding:24px 26px;
+        background:var(--ink);
+        color:#fff;
+        border-radius:14px;
+        overflow:hidden;
+    }
+    .header .deco {
+        position:absolute; right:-40px; top:-40px;
+        width:180px; height:180px;
+        border:24px solid rgba(255,255,255,0.07);
+        border-radius:50%;
+    }
+    .header .deco2 {
+        position:absolute; right:30px; bottom:-50px;
+        width:90px; height:90px;
+        background:rgba(255,255,255,0.06);
+        border-radius:50%;
+    }
+    .eyebrow { font-size:12px; letter-spacing:3px; font-weight:600; opacity:0.75; margin-bottom:8px; }
+    .doc-title { font-size:34px; font-weight:800; line-height:1.18; letter-spacing:-0.5px; }
+    .doc-title .pot { display:inline-block; background:#fff; color:var(--ink); padding:0 10px; border-radius:6px; margin-top:4px; }
+    .doc-sub { font-size:14px; opacity:0.85; margin-top:13px; font-weight:400; }
+
+    /* ===== Section ===== */
+    .section { margin-bottom:22px; }
+    .section-head { display:flex; align-items:center; gap:10px; margin-bottom:11px; }
+    .section-number {
+        width:28px; height:28px; background:var(--ink); color:#fff;
+        border-radius:50%; display:flex; align-items:center; justify-content:center;
+        font-weight:700; font-size:14px; flex-shrink:0;
+    }
+    .section-title { font-size:19px; font-weight:700; letter-spacing:-0.3px; }
+
+    .lead { font-size:14.5px; line-height:1.7; }
+    .lead strong, p strong { font-weight:700; }
+
+    .soft-card { background:var(--soft); border-radius:10px; padding:16px 19px; }
+
+    .compare { display:grid; grid-template-columns:1fr auto 1fr; align-items:stretch; gap:12px; margin-top:12px; }
+    .chip { border:1px solid var(--line); border-radius:10px; padding:13px 15px; background:#fff; }
+    .chip.dark { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .chip .ct { font-size:14px; font-weight:700; margin-bottom:4px; }
+    .chip p { font-size:12.5px; line-height:1.5; }
+    .arrow { display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; color:var(--line); }
+
+    ul.clean { list-style:none; }
+    ul.clean li { position:relative; padding-left:20px; margin-bottom:9px; font-size:14px; line-height:1.65; }
+    ul.clean li::before { content:""; position:absolute; left:3px; top:9px; width:7px; height:7px; background:var(--ink); border-radius:50%; }
+
+    .partner-box { margin:13px 0; border:1px solid var(--line); border-radius:10px; padding:15px 17px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .partner h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+    .partner h4 a { color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); }
+    .partner p { font-size:12px; line-height:1.55; color:var(--gray); }
+
+    .agent-grid { display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:6px; }
+    .agent-card { border:1px solid var(--line); border-radius:12px; padding:15px 17px; }
+    .agent-card.feature { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .agent-label { font-size:11px; font-weight:700; letter-spacing:0.3px; color:var(--gray); margin-bottom:6px; }
+    .agent-card.feature .agent-label { color:rgba(255,255,255,0.7); }
+    .agent-name { font-size:15px; font-weight:700; margin-bottom:6px; letter-spacing:-0.2px; }
+    .agent-card p { font-size:12.5px; line-height:1.55; }
+    .agent-card.feature p { opacity:0.92; }
+
+    .intro-line { font-size:13px; color:var(--gray); margin-bottom:9px; }
+
+    .benefit-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .benefit { border:1px solid var(--line); border-left:4px solid var(--ink); border-radius:0 9px 9px 0; padding:12px 15px; }
+    .benefit .bt { font-size:14px; font-weight:700; margin-bottom:4px; }
+    .benefit p { font-size:12.5px; line-height:1.55; color:var(--gray); }
+
+    /* ===== Timeline (진행 절차) ===== */
+    .timeline { position:relative; margin-left:8px; padding-left:24px; border-left:2px solid var(--ink); }
+    .tl-item { position:relative; margin-bottom:16px; }
+    .tl-item:last-child { margin-bottom:0; }
+    .tl-item::before { content:""; position:absolute; left:-31px; top:3px; width:12px; height:12px; background:#fff; border:3px solid var(--ink); border-radius:50%; }
+    .tl-date { font-size:12px; font-weight:700; color:var(--ink); margin-bottom:2px; }
+    .tl-item p { font-size:13.5px; line-height:1.6; color:#333; }
+
+    .cta {
+        margin-top:16px;
+        background:var(--ink);
+        color:#fff;
+        border-radius:12px;
+        padding:18px 22px;
+        font-size:15px;
+        line-height:1.7;
+        text-align:center;
+    }
+    .cta strong { font-weight:700; }
+
+    .footer { margin-top:26px; padding-top:12px; border-top:1px solid var(--line); font-size:11px; color:var(--gray); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; }
+
+    /* responsive for mobile share view */
+    @media (max-width:640px) {
+        body { padding:0; background:#fff; }
+        .page { padding:22px 18px; box-shadow:none; max-width:100%; }
+        .doc-title { font-size:25px; }
+        .compare { grid-template-columns:1fr; }
+        .arrow { transform:rotate(90deg); height:24px; }
+        .partner-box, .agent-grid, .benefit-grid { grid-template-columns:1fr; }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <div class="header">
+        <div class="deco"></div>
+        <div class="deco2"></div>
+        <div class="eyebrow">테크포임팩트 캠퍼스 · AI 에이전트 실습 안내</div>
+        <div class="doc-title">AI 기후테크 에이전트 플랫폼<br><span class="pot">클라이밋팟</span> 이란?</div>
+        <div class="doc-sub">기후 문제를 푸는 AI 에이전트를 모으고, 누구나 직접 만들어 올리는 공간</div>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">1</div><div class="section-title">클라이밋팟은?</div></div>
+        <div class="soft-card">
+            <p class="lead">
+                클라이밋팟은 <strong>기후 문제를 해결하는 다양한 AI 에이전트를 한곳에 모아두는 플랫폼</strong>입니다.
+                기상·환경 데이터와 AI를 활용해 만든 작은 도구(에이전트)들이 모여, 시민·기업·공공기관이 기후 행동을
+                더 쉽게 할 수 있도록 돕습니다. 클라이밋팟에는 <strong>“기후 문제와 관련이 있다면 누구나 자기 아이디어를
+                에이전트로 만들어 올릴 수 있습니다.”</strong>
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">2</div><div class="section-title">잠깐, “에이전트”가 뭐예요?</div></div>
+        <p class="lead">
+            에이전트는 <strong>특정 목적을 위해 사용자와 대화하며 일을 처리해 주는 AI 도구</strong>예요.
+            단순히 답만 하는 챗봇을 넘어, 정보를 물어보고 → 조건을 확인하고 → 결과물(신청서, 리포트, 추천 등)까지 만들어 줍니다.
+        </p>
+        <div class="compare">
+            <div class="chip">
+                <div class="ct">일반 챗봇</div>
+                <p>“질문하면 답해주는” 정도에서 끝남</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="chip dark">
+                <div class="ct">AI 에이전트</div>
+                <p>대화를 이어가며 실제 결과물·행동까지 만들어 냄</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">3</div><div class="section-title">클라이밋팟은 왜 만들어졌나요?</div></div>
+        <ul class="clean">
+            <li>기후 문제를 해결하려는 AI 에이전트가 점점 많아지지만, <strong>흩어져 있어 한눈에 보기 어렵습니다.</strong> 클라이밋팟은 이것들을 한곳에 모읍니다.</li>
+            <li>혼자서는 에이전트를 만들고 운영하기 어려운 사람·조직도, 플랫폼에 올리면 <strong>더 쉽게 알려지고 사용자를 만날 수</strong> 있습니다.</li>
+            <li>카카오임팩트·소풍벤처스·라이브데이터가 함께 운영하며, <strong>기후 기술의 저변을 넓히고 생태계를 키우는</strong> 것이 목표입니다.</li>
+        </ul>
+        <div class="partner-box">
+            <div class="partner">
+                <h4><a href="https://sopoong.net/" target="_blank" rel="noopener">소풍벤처스</a></h4>
+                <p>국내 대표 초기 스타트업 투자사이자, 사회적 가치와 재무적 가치를 동시에 고려하는 임팩트 투자사. 2008년 국내 최초 임팩트 투자사로 설립되어 기후·에너지·IT서비스·푸드·농업 등 다양한 영역의 혁신 스타트업에 투자합니다.</p>
+            </div>
+            <div class="partner">
+                <h4><a href="https://laivdata.com/" target="_blank" rel="noopener">라이브데이터</a></h4>
+                <p>2020년 설립된 인공지능(AI) 솔루션 기업. 교육·금융·여행·엔터테인먼트 산업을 중심으로 맞춤형 AI 에이전트 서비스를 제공합니다.</p>
+            </div>
+        </div>
+        <ul class="clean">
+            <li>9월 기후테크 스타트업 서밋(제주)에서 그동안 모인 에이전트와 플랫폼을 함께 선보일 예정입니다.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">4</div><div class="section-title">클라이밋팟에 실제로 올라가는 에이전트들</div></div>
+        <p class="intro-line">크게 ①공공·시민용 샘플 에이전트와 ②기후테크 스타트업과 함께 만드는 실전 에이전트가 있습니다.</p>
+        <div class="agent-grid">
+            <div class="agent-card">
+                <div class="agent-label">라이브데이터가 만든 샘플 · 경기연구원 데이터 활용</div>
+                <div class="agent-name">기후사주 / 기후의회 팩트체크</div>
+                <p>날씨·환경 데이터로 재미있게 기후를 풀어내거나, 기후 정보의 사실 여부를 확인해 주는 시민 참여형 에이전트.</p>
+            </div>
+            <div class="agent-card">
+                <div class="agent-label">스타트업 협력 · 에너지</div>
+                <div class="agent-name">햇빛연금 (루트에너지)</div>
+                <p>마을 태양광 사업 신청 과정을 대화로 안내하고, 조건을 확인해 최종 신청서까지 만들어 주는 에이전트.</p>
+            </div>
+            <div class="agent-card">
+                <div class="agent-label">스타트업 협력 · 영농형 태양광</div>
+                <div class="agent-name">작물 사후관리 (엔벨롭스)</div>
+                <p>태양광 설치 후 센서 데이터를 바탕으로 작물 상태와 관리 현황을 대화로 파악하도록 돕는 에이전트.</p>
+            </div>
+            <div class="agent-card feature">
+                <div class="agent-label">그리고 여기에…</div>
+                <div class="agent-name">여러분이 만든 결과물까지!</div>
+                <p>테크포임팩트 캠퍼스에서 만든 기후 프로젝트를 에이전트로 바꿔 올리면, 같은 플랫폼 위에서 함께 소개됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">5</div><div class="section-title">캠퍼스 여러분이 무엇을 얻을 수 있냐면…!</div></div>
+        <div class="benefit-grid">
+            <div class="benefit">
+                <div class="bt">⚡ 에이전트 서비스를 빠르게 구현</div>
+                <p>전문가의 친절한 강의를 통해 내 프로젝트를 빠르게 에이전트로 만들어 볼 수 있습니다.</p>
+            </div>
+            <div class="benefit">
+                <div class="bt">🚀 실제 플랫폼 탑재</div>
+                <p>캠퍼스에서 만든 기후 프로젝트를 에이전트로 만들어 클라이밋팟에 탑재합니다.</p>
+            </div>
+            <div class="benefit">
+                <div class="bt">📁 포트폴리오</div>
+                <p>제작자 크레딧이 명확히 남는 형태로 아카이빙되고, 필요시 수료증도 발급됩니다.</p>
+            </div>
+            <div class="benefit">
+                <div class="bt">🤝 네트워킹 기회</div>
+                <p>잘 만든 팀은 기후 서밋에서 전문가·발표자들과 만나고 직접 발표할 기회도 얻을 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-head"><div class="section-number">6</div><div class="section-title">진행 절차</div></div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-date">2026년 7월~8월 중</div>
+                <p>테크포임팩트 캠퍼스에 모여 약 3시간 동안 자신의 결과물을 에이전트로 만드는 실습을 진행합니다.</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">실습 강의 &amp; 탑재 지원</div>
+                <p>플랫폼을 제작·운영하는 라이브데이터의 CTO가 직접 실습 강의와 플랫폼 탑재를 도와줍니다.</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">2026년 9월 10일–12일 · 제주</div>
+                <p>기후테크 스타트업 서밋에 참여하는 팀은 제주에서 함께합니다.</p>
+            </div>
+        </div>
+        <div class="cta">
+            참여를 원하시면 <strong>카카오임팩트 조안</strong>에게 빠르게 알려주세요.<br>
+            이후 과정은 따로 안내 드리겠습니다.
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>클라이밋팟 (Climate Pot) · 카카오임팩트 × 소풍벤처스 × 라이브데이터</span>
+        <span>2026 테크포임팩트 캠퍼스</span>
+    </div>
+
+</div>
+</body>
+</html>
